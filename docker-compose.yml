@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+  client:
+    image: client
+    build:
+      context: client/
+      dockerfile: Dockerfile
+    links:  
+      - server
+    depends_on:
+      - server
+
+
+  server:
+    image: server
+    build:
+        context: server/
+        dockerfile: Dockerfile
+    ports:
+        - 12345:12345
+    expose:  
+        - 12345  
